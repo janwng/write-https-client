@@ -1,16 +1,6 @@
-
-// var myReadStream = fs.createReadStream(__dirname + '/readme.txt', 'utf8');
-
-// myReadStream.on('data', function(chunk){
-//   console.log('new chunk received:', chunk);
-// })
-
-
-
 function getAndPrintHTML() {
 
   var https = require('https');
-  var receivedChunk = '';
 
   var requestOptions = {
     host: 'sytantris.github.io',
@@ -19,6 +9,7 @@ function getAndPrintHTML() {
 
   https.get(requestOptions, function(response) {
 
+    var receivedChunk = '';
     response.setEncoding('utf8');
 
     response.on('data', function(data) {
@@ -29,10 +20,7 @@ function getAndPrintHTML() {
       console.log(receivedChunk);
     });
   });
-
-
 }
-
 
 getAndPrintHTML();
 
